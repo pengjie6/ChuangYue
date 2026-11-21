@@ -16,7 +16,7 @@ MonoBehaviour:
   wasmResourceUrl: http://
   OutputDir: E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\tt-minigame
   useByteAudioAPI: 0
-  wasmMemorySize: 128
+  wasmMemorySize: 384
   isWebGL2: 0
   needCompress: 1
   symbolMode: 1
@@ -27,10 +27,10 @@ MonoBehaviour:
   hideAfterCallmain: 1
   disableLoadingPage: 0
   useDataCDNAsStreamingAssetsUrl: 0
-  optimizeWebGLMemoryInBackground: 1
+  optimizeWebGLMemoryInBackground: 0
   assetBundleFSEnabled: 1
-  assetBundleBufferCapacity: 128
-  assetBundleBufferTTL: 5
+  assetBundleBufferCapacity: 256
+  assetBundleBufferTTL: 300
   preloadFiles: 
   CDN: 
   preloadDataListUrl: 
@@ -52,7 +52,7 @@ MonoBehaviour:
   NativeWhiteListRegex:
   - com.bytedance.starksdk
   - _Backup~
-  _appId: tt1ede686380a0448002
+  _appId: tt3f1d49a0a16392dd02
   version: 
   autoVersion: 0
   _webglPackagePath: E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\tt-minigame\tt-minigame

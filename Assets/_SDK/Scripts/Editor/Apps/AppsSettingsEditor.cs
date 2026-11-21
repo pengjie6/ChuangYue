@@ -1,53 +1,27 @@
-﻿using Facebook.Unity.Editor;
-using Facebook.Unity.Settings;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace apps.editor
 {
+    /// <summary>
+    /// AppsSettings 的自定义 Inspector。
+    /// 已移除第三方统计/归因 SDK 相关项，仅保留 ADS 与调试开关。
+    /// </summary>
     [CustomEditor(typeof(AppsSettings))]
     public class AppsSettingsEditor : Editor
     {
         SerializedProperty autoInitialize;
-
-
-        SerializedProperty integrateFacebook;
-        SerializedProperty appLabels;
-        SerializedProperty appFacebookID;
-        SerializedProperty clientTokens;
-
         SerializedProperty integrateADS;
         SerializedProperty showADSType;
         SerializedProperty adsInfo;
-
-        SerializedProperty integrateGameAnalytics;
-        SerializedProperty integrateAppMetrica;
-        SerializedProperty appMetricaInfo;
-
-        SerializedProperty integrateTenjin;
-        SerializedProperty tenjinApiKey;
-
         SerializedProperty debugMode;
 
         protected void OnEnable()
         {
             autoInitialize = serializedObject.FindProperty("autoInitialize");
-
-            integrateFacebook = serializedObject.FindProperty("integrateFacebook");
-            appLabels = serializedObject.FindProperty("appLabels");
-            appFacebookID = serializedObject.FindProperty("appFacebookID");
-            clientTokens = serializedObject.FindProperty("clientTokens");
-
             integrateADS = serializedObject.FindProperty("integrateADS");
             showADSType = serializedObject.FindProperty("showADSType");
             adsInfo = serializedObject.FindProperty("adsInfo");
-            integrateGameAnalytics = serializedObject.FindProperty("integrateGameAnalytics");
-            integrateAppMetrica = serializedObject.FindProperty("integrateAppMetrica");
-            appMetricaInfo = serializedObject.FindProperty("appMetricaInfo");
-
-            integrateTenjin = serializedObject.FindProperty("integrateTenjin");
-            tenjinApiKey = serializedObject.FindProperty("tenjinApiKey");
-
             debugMode = serializedObject.FindProperty("debugMode");
         }
 
@@ -62,39 +36,12 @@ namespace apps.editor
             GUILayout.Label("Auto Apps Initialize", header);
             EditorGUILayout.PropertyField(autoInitialize);
 
-            GUILayout.Label("Facebook Settings", header);
-
-            EditorGUILayout.PropertyField(integrateFacebook);
-            if (appsSettings.integrateFacebook)
-            {
-                EditorGUILayout.PropertyField(appLabels);
-                EditorGUILayout.PropertyField(appFacebookID);
-                EditorGUILayout.PropertyField(clientTokens);
-            }
-
             GUILayout.Label("Ads Settings", header);
             EditorGUILayout.PropertyField(integrateADS);
             if (appsSettings.integrateADS)
             {
                 EditorGUILayout.PropertyField(showADSType);
                 EditorGUILayout.PropertyField(adsInfo);
-            }
-
-            GUILayout.Label("GameAnalytics settings", header);
-            EditorGUILayout.PropertyField(integrateGameAnalytics);
-
-            GUILayout.Label("AppMetrica Settings", header);
-            EditorGUILayout.PropertyField(integrateAppMetrica);
-            if (appsSettings.integrateAppMetrica)
-            {
-                EditorGUILayout.PropertyField(appMetricaInfo);
-            }
-
-            GUILayout.Label("Tenjin Settings", header);
-            EditorGUILayout.PropertyField(integrateTenjin);
-            if (appsSettings.integrateTenjin)
-            {
-                EditorGUILayout.PropertyField(tenjinApiKey);
             }
 
             GUILayout.Label("Other Settings", header);
@@ -111,7 +58,6 @@ namespace apps.editor
             GUILayout.Label("Default orientation:   " + PlayerSettings.defaultInterfaceOrientation, headInfo);
             GUILayout.EndHorizontal();
 
-
             GUILayout.Label("Android", headInfo);
 
             GUILayout.BeginHorizontal("box");
@@ -124,17 +70,6 @@ namespace apps.editor
             GUILayout.Label("Target architectures:   " + PlayerSettings.Android.targetArchitectures, headInfo);
             GUILayout.EndHorizontal();
 
-            GUILayout.Label("IOS", headInfo);
-
-            GUILayout.BeginHorizontal("box");
-            GUILayout.Label("Target device:   " + PlayerSettings.iOS.targetDevice, headInfo);
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal("box");
-            int num = PlayerSettings.GetArchitecture(BuildTargetGroup.iOS);
-            string architecture = (num == 0) ? "Armv7" : (num == 1) ? "Arm64" : "Universal";
-            GUILayout.Label("Architecture:   " + architecture, headInfo);
-            GUILayout.EndHorizontal();
-
             GUIStyle headButton = new GUIStyle(GUI.skin.button);
             headButton.margin = new RectOffset(0, 0, 20, 0);
             headButton.fixedHeight = 50;
@@ -142,27 +77,10 @@ namespace apps.editor
 
             if (GUILayout.Button("Save And Refresh", headButton))
             {
-                RefreshFacebookSettings(appsSettings);
-                ManifestMod.GenerateManifest();
                 AppsUtility.SaveData(target);
             }
-            
+
             serializedObject.ApplyModifiedProperties();
-        }
-
-        public static void RefreshFacebookSettings(AppsSettings settings)
-        {
-            if (ScriptableObjectUtility.GetScriptableObjects<FacebookSettings>().Length == 0)
-            {
-                AppsUtility.CreateAsset<FacebookSettings>(
-                    "Assets/" + FacebookSettings.FacebookSettingsPath + "/",
-                    FacebookSettings.FacebookSettingsAssetName + FacebookSettings.FacebookSettingsAssetExtension
-                    );
-            }
-
-            FacebookSettings.AppIds[0] = settings.appFacebookID;
-            FacebookSettings.AppLabels[0] = settings.appLabels;
-            FacebookSettings.ClientTokens[0] = settings.clientTokens;
         }
 
         public static AppsSettings GetAppSettings()

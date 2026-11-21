@@ -1,10 +1,13 @@
-﻿using apps.analytics;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace apps
 {
     public enum ShowADSType { Simulator, Debug, Non }
 
+    /// <summary>
+    /// 应用集成配置。
+    /// 已移除全部第三方统计与归因 SDK，仅保留内部 ADS 模拟/调试开关。
+    /// </summary>
     [CreateAssetMenu(fileName = "AppsSettings", menuName = "AppsSettings", order = 1)]
     public class AppsSettings : ScriptableObject
     {
@@ -12,22 +15,9 @@ namespace apps
 
         public bool autoInitialize = true;
 
-        public bool integrateFacebook = true;
-        public string appLabels = "";
-        public string appFacebookID = "Entry Facebook ID...";
-        public string clientTokens = "";
-
-
         public bool integrateADS = false;
         public ShowADSType showADSType = ShowADSType.Simulator;
         public ADSInfo adsInfo;
-
-        public bool integrateGameAnalytics = true;
-        public bool integrateAppMetrica = true;
-        public AppMetricaInfo appMetricaInfo;
-
-        public bool integrateTenjin = true;
-        public string tenjinApiKey = "YAZ1QBH6S2WVW1C2DRSSOF1NNVHDSMSH";
 
         public bool debugMode = true;
     }

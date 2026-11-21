@@ -1,9 +1,13 @@
-﻿using apps.analytics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace apps
 {
+    /// <summary>
+    /// 应用级集成入口。
+    /// 已移除全部第三方统计与归因 SDK，
+    /// 仅保留内部 ADS 抽象（实际广告由 AdSDK 的抖音平台接管）。
+    /// </summary>
     public static class AppsIntegration
     {
         public readonly static string s_AppSettingsName = "AppsSettings";
@@ -16,6 +20,7 @@ namespace apps
         public static void AutoInitialize()
         {
             AppsSettings settings = Resources.Load<AppsSettings>(s_AppSettingsName);
+            if (settings == null) return;
             if (settings.autoInitialize) Initialize(settings);
         }
 
@@ -35,13 +40,6 @@ namespace apps
             if (settings.integrateADS)
             {
                 IADS adsMaker = null;
-#if Support_Applovin
-                ADSInfo adsInfo = settings.adsInfo;
-                adsMaker = new ad.AppLovinADS(adsInfo.appLovinInfo, adsInfo.useBanner, adsInfo.useInterstitial, adsInfo.useRewardedVideo);
-#elif Support_IronSource
-                ADSInfo adsInfo = settings.adsInfo;
-                adsMaker = new ad.IronSourceADS(adsInfo.ironSourceInfo, adsInfo.useBanner, adsInfo.useInterstitial, adsInfo.useRewardedVideo);
-#else
                 switch (settings.showADSType)
                 {
                     case ShowADSType.Simulator:
@@ -52,54 +50,10 @@ namespace apps
                         adsMaker = new ADSDebugger("####### Debuger ######", settings.showADSType == ShowADSType.Debug);
                         break;
                 }
-#endif
                 ADSManager.Initialize(adsMaker, true, settings.adsInfo.showInterstitialEvery);
                 s_Applications.Add(adsMaker);
             }
 
-            if (settings.integrateFacebook)
-            {
-                // 小游戏 / WebGL 里没有真实 DOM：Facebook SDK 的 FBUnity.init 会往 document.body
-                // 插一个 fb-root 节点，而 tt 环境的 document 是 shim，参数不是真正的 Node，
-                // 直接抛 "Failed to execute 'insertBefore' ... parameter 1 is not of type 'Node'"，
-                // 异常从引擎 init 里冒出来会让 Unity 直接 quit（黑屏加载不出来）。
-                if (Application.platform == RuntimePlatform.WebGLPlayer)
-                {
-                    Debug.LogWarning("[Integrations] WebGL/小游戏环境跳过 Facebook SDK 初始化");
-                }
-                else
-                {
-                    FacebookApp.InitFacebookApp();
-                }
-            }
-
-            if (settings.integrateTenjin)
-            {
-                TenjinManager tenjin = new TenjinManager(settings.tenjinApiKey);
-                EventsLogger.AddEvent(tenjin);
-                s_ApplicationsPause.Add(tenjin);
-            }
-
-            if (settings.integrateGameAnalytics)
-            {
-                GameAnalyticsEvents GA = new GameAnalyticsEvents();
-
-                _objectHelper.AddComponent(typeof(GameAnalyticsSDK.Events.GA_SpecialEvents));
-                _objectHelper.AddComponent(typeof(GameAnalyticsSDK.GameAnalytics));
-
-                EventsLogger.AddEvent(GA);
-                s_Applications.Add(GA);
-            }
-
-            if (settings.integrateAppMetrica)
-            {
-                AppMetricaEvents appMetrica = new AppMetricaEvents(settings.appMetricaInfo);
-
-                EventsLogger.AddEvent(appMetrica);
-                s_ApplicationsPause.Add(appMetrica);
-                s_Applications.Add(appMetrica);
-            }
-            
             if (settings.debugMode)
             {
                 EventsDebug debug = new EventsDebug();

@@ -1,12 +1,8 @@
+# 自定义 ProGuard 规则
+# 原 Tenjin / Google Play Services / installreferrer / Huawei Ads 相关规则已随 SDK 一并移除。
+# 如后续接入新的安卓 SDK，在此追加对应的 keep 规则。
 
--keep class com.tenjin.** { *; }
--keep public class com.google.android.gms.ads.identifier.** { *; }
--keep public class com.google.android.gms.common.** { *; }
--keep public class com.android.installreferrer.** { *; }
 -keep class * extends java.util.ListResourceBundle {
     protected Object[][] getContents();
 }
 -keepattributes *Annotation*
-
--keep class com.huawei.hms.ads.** { *; }
--keep interface com.huawei.hms.ads.** { *; }

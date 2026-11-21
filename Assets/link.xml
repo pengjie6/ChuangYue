@@ -1,0 +1,32 @@
+<linker>
+  <!--
+    IL2CPP 低等级裁剪保护。
+    LevelInfoSO / LevelsData / CoinsData 等 ScriptableObject 只被 .asset、.prefab 引用，
+    若关卡 prefab 未被任何资产引用（例如 LevelContainer._levels 出现空引用），
+    这些类型会整条链路被裁掉，运行时表现为：
+      "The referenced script (main.level.LevelInfoSO) is missing!"
+      "A scripted object has a different serialization layout (Read 44 bytes but expected 48 bytes)"
+    因此在这里显式保留项目自有命名空间下的全部类型。
+  -->
+  <assembly fullname="Assembly-CSharp">
+    <namespace fullname="main.level" preserve="all" />
+    <namespace fullname="main.store" preserve="all" />
+    <namespace fullname="main.ui" preserve="all" />
+    <namespace fullname="main.ui.coin" preserve="all" />
+    <namespace fullname="engine" preserve="all" />
+    <namespace fullname="engine.store" preserve="all" />
+    <namespace fullname="engine.coin" preserve="all" />
+    <namespace fullname="engine.camera" preserve="all" />
+    <namespace fullname="engine.senser" preserve="all" />
+    <namespace fullname="engine.utility" preserve="all" />
+    <namespace fullname="engine.random" preserve="all" />
+    <namespace fullname="core" preserve="all" />
+    <namespace fullname="data" preserve="all" />
+    <namespace fullname="input" preserve="all" />
+    <namespace fullname="physic" preserve="all" />
+    <namespace fullname="loading" preserve="all" />
+    <namespace fullname="events" preserve="all" />
+    <namespace fullname="States.Enemy" preserve="all" />
+  </assembly>
+  <assembly fullname="Assembly-CSharp-firstpass" preserve="all" />
+</linker>

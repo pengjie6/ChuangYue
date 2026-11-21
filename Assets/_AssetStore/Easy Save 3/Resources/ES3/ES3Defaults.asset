@@ -29,33 +29,32 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
-    - Assembly-CSharp
-    - NavMeshComponentsEditor
-    - NaughtyAttributes.Core
     - Obi
+    - Assembly-CSharp
+    - Cinemachine
+    - NaughtyAttributes.Core
+    - NavMeshComponentsEditor
+    - Autodesk.Fbx
+    - ToonyColorsPro.Editor
+    - NaughtyAttributes.Test
     - NaughtyAttributes.Editor
     - LunarConsoleEditor
-    - NaughtyAttributes.Test
-    - Autodesk.Fbx
-    - com.easysave.core
-    - Cinemachine
-    - PPv2URPConverters
     - Obi.Editor
-    - MPUIKit
-    - LunarConsole
-    - com.template.engine
-    - MPUIKit.Editor
+    - com.easysave.core
+    - PPv2URPConverters
+    - OPS.Obfuscator
     - AppsIntegrationCore
-    - com.bytedance.ttsdk-editor
-    - ToonyColorsPro.Editor
-    - ToonyColorsPro.Runtime
+    - MPUIKit
+    - com.template.engine
+    - LunarConsole
+    - NavMeshComponents
+    - MPUIKit.Editor
     - TTLitJson
     - TTWebGL
-    - Purchasing.Common
-    - NavMeshComponents
-    - Autodesk.Fbx.Editor
-    - Analytics
+    - ToonyColorsPro.Runtime
+    - com.bytedance.ttsdk-editor
     - com.bytedance.ttsdk.ref
+    - Autodesk.Fbx.Editor
     - FbxBuildTestAssets
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
