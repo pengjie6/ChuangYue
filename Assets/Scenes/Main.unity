@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.68235296, b: 0.14901961, a: 0}
+  m_Color: {r: 0.9764706, g: 0.8470589, b: 0.5411765, a: 0.0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2096,7 +2096,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u770B\u5E7F\u544A\u9886\u5956\u52B1"
+  m_text: "\u770B\u5E7F\u544A\u5F97\u661F\u5149"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 781095ea128f1d64884a9fd28a6cead2, type: 2}
   m_sharedMaterial: {fileID: -1362382178054292002, guid: 781095ea128f1d64884a9fd28a6cead2, type: 2}
@@ -2972,7 +2972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9314745, b: 0.1716981, a: 1}
+  m_Color: {r: 0.9764706, g: 0.8470589, b: 0.5411765, a: 1.0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
