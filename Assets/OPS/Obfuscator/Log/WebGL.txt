@@ -31552,15 +31552,15 @@
   - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport
   - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\Plugins\ByteGame\com.bytedance.bgdt\Editor
   - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom
-  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\Plugins\RainbowAssets\!Core\Assemblies
-  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\Plugins\ByteGame\com.bytedance.starksdk
-  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\OPS\Plugins\Json
-  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\OPS\Editor\Plugins\OPS.Assets.Editor
   - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\OPS\Editor\Plugins\Mono.Cecil
   - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\OPS\Obfuscator\Editor\Plugins
+  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\Plugins\RainbowAssets\!Core\Assemblies
+  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\OPS\Editor\Plugins\OPS.Assets.Editor
+  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\OPS\Plugins\Json
+  - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Assets\Plugins\ByteGame\com.bytedance.starksdk
   - E:\unitystudy\project\BalloonMan\Unity2022_BalloonMan\Unity2022_BalloonMan\Library\PackageCache\com.unity.burst@1.8.21
-  - Assets\Plugins\ByteGame\com.bytedance.starksdk
   - Assets\OPS\Plugins\Json
+  - Assets\Plugins\ByteGame\com.bytedance.starksdk
   - E:\unitystudy\engine\2022.3.62f3c1\Editor\Data\NetStandard\ref\2.1.0
   - E:\unitystudy\engine\2022.3.62f3c1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard
   - E:\unitystudy\engine\2022.3.62f3c1\Editor\Data\NetStandard\Extensions\2.0.0
